@@ -61,10 +61,10 @@ function createCaption (image, key, options, captionKey) {
 
 function renderTemplate (template, data) {
   return template
-    .replace('_CAPTION_', data.label) // img title or alt attribute
-    .replace('_PAGE_LEVEL_', data.level) // book page level
-    .replace('_PAGE_IMAGE_NUMBER_', data.index) // order of the image on the page
-    .replace('_BOOK_IMAGE_NUMBER_', data.nro); // order of the image on the book
+    .replace(/_CAPTION_/g, data.label) // img title or alt attribute
+    .replace(/_PAGE_LEVEL_/g, data.level) // book page level
+    .replace(/_PAGE_IMAGE_NUMBER_/g, data.index) // order of the image on the page
+    .replace(/_BOOK_IMAGE_NUMBER_/g, data.nro); // order of the image on the book
 }
 
 function setImageAttributes (img, data) {
