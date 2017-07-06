@@ -1,9 +1,9 @@
 {
-  "name": "gitbook-plugin-image-captions",
+  "name": "gitbook-plugin-image-captions-extended",
   "description": "Image captions plugin for GitBook",
   "main": "src/index.js",
-  "version": "3.1.0",
-  "author": "Tomas Dvorak <todvora@gmail.com>",
+  "version": "0.0.1",
+  "author": "Nadia Ghebreial <nadiagnieto@gmail.com>",
   "keywords": [
     "gitbook",
     "gitbook-plugin",
@@ -13,15 +13,12 @@
   "engines": {
     "gitbook": "^3"
   },
-  "homepage": "https://github.com/todvora/gitbook-plugin-image-captions",
+  "homepage": "https://github.com/NGhebreial/gitbook-plugin-image-captions",
   "repository": {
     "type": "git",
-    "url": "https://github.com/todvora/gitbook-plugin-image-captions.git"
+    "url": "https://github.com/NGhebreial/gitbook-plugin-image-captions"
   },
   "license": "Apache-2.0",
-  "bugs": {
-    "url": "https://github.com/todvora/gitbook-plugin-image-captions/issues"
-  },
   "dependencies": {
     "cheerio": "^0.22.0",
     "q": "^1.4.1"
