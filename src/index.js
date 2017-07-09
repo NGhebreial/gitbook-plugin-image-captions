@@ -195,27 +195,31 @@ var readAllImages = function (gitbook) {
   var promises = [];
 
   var pageIndex = 0;
+  var processed = []
 
   gitbook.summary.walk(function (page) {
     var currentPageIndex = pageIndex++;
     if (page.path) { // Check that there is truly a link
-      promises.push(
-        getPageHtmlContent(gitbook, page)
-        .then(function (pageContent) {
-          var $ = cheerio.load(pageContent);
-          var pageImages = $('img')
-            .filter(function () {
-              return shouldBeWrapped($(this));
-            })
-            .map(function (index) {
-              var img = $(this);
-              return parseImageData(page, index++, img);
-            }).get();
-          return {
-            data: pageImages.reduce(function (acc, val) { return acc.concat(val); }, []),
-            order: currentPageIndex
-          };
-        }));
+      if (processed.indexOf(page.path) === -1) {
+        processed.push(page.path)
+        promises.push(
+          getPageHtmlContent(gitbook, page)
+          .then(function (pageContent) {
+            var $ = cheerio.load(pageContent);
+            var pageImages = $('img')
+              .filter(function () {
+                return shouldBeWrapped($(this));
+              })
+              .map(function (index) {
+                var img = $(this);
+                return parseImageData(page, index++, img);
+              }).get();
+            return {
+              data: pageImages.reduce(function (acc, val) { return acc.concat(val); }, []),
+              order: currentPageIndex
+            };
+          }));
+      }
     }
   });
   return Q.all(promises);
